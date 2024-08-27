@@ -191,27 +191,64 @@ input, select, textarea {
 		font-size: 2.75em;
 	}
 
-	/* Styling for the text */
-.typing-text {
-    font-size: 2em;
-    font-family: "Space Grotesk", sans-serif monospace;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 4px solid;
-    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-	color:orange;
+.animated-text{
+	font-weight: 600;
+	min-width: 280px;
+	font-size: 30px;
+}
+.animated-text span{
+	position: relative;
+}
+.animated-text span::before{
+	content: "CS Student";
+	color: #ff7f50;
+	animation: words 20s infinite;
 }
 
-/* Typing effect */
+.animated-text span::after {
+	content: "";
+	position: absolute;
+	width: calc(100% + 8px);
+	height: 100%;
+	background-color: #353839;
+	border-left: 2px solid #ff7f50;
+	right: -8px;
+	animation: cursor .8s infinite, typing 18s steps(14) infinite;
+
+}
+
+@keyframes cursor {
+	to{
+		border-left: 2px solid #ff7f5000;
+	}
+
+}
+
+@keyframes words {
+	0%, 20% {
+		content: "CS Student";
+	}
+	21%, 40% {
+		content: "Web Developer";
+	}
+	41%, 60% {
+		content: "Software Engineer";
+	}
+	61%, 80% {
+		content: "Math wiz";
+	}
+	81%, 100% {
+		content: "ML enthusiast";
+	}
+}
+
 @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-/* Blinking caret */
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: black; }
+	10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {
+		width: 0;
+	}
+	5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {
+		width: calc(100% + 8px);
+	}
 }
 
 		h1.major {
@@ -220,6 +257,7 @@ input, select, textarea {
 			padding-bottom: 0.35em;
 		}
 	
+
 
 		h1.major after {
 			background-image: -moz-linear-gradient(to right, green, #b74e91);
